@@ -10,7 +10,7 @@
     <b>Pages:</b> {{book.pageCount}}<br />
     <b>Description:</b>
     <p>{{book.shortDescription}}</p>
-    <button class="btn btn-primary">Add to Cart</button>
+    <button class="btn btn-primary" @click="AddtoCart(book.bookid,book.title,book.price)">Add to Cart</button>
     <br />
 </div>
 </template>
@@ -19,6 +19,14 @@
 export default {
     name: "BookItem",
     props: ["book"],
+    methods:{
+        AddtoCart(bookId,bookTitle,bookPrice){
+            this.$emit('add:bookitem',{"bookid":bookId,
+            "title":bookTitle,
+            "price":bookPrice
+            })
+        }
+    },
 
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 <div>
     <div v-bind:key="book.bookid" v-for="book in books">
-        <BookItem v-bind:book="book" />
+        <BookItem v-bind:book="book" v-on:add:bookitem="AddtoCart"/>
     </div>
 </div>
 </template>
@@ -14,7 +14,12 @@ export default {
     components: {
         BookItem
     },
-    props: ["books"]
+    props: ["books"],
+    methods:{
+        AddtoCart(book){
+            this.$emit('add:book',book)
+        }
+    }
 }
 </script>
 
